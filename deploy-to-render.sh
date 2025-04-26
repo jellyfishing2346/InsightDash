@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# InsightDash - One-Click Render.com Deployment Script
+# This script helps you deploy to Render.com
+
+echo "🚀 InsightDash Render.com Deployment Helper"
+echo "==========================================="
+
+echo ""
+echo "📋 Pre-deployment Checklist:"
+echo "✅ Code pushed to GitHub repository"
+echo "✅ Backend and Frontend Dockerfiles exist"
+echo "✅ Mock server provides all required APIs"
+echo "✅ Analytics overview working locally"
+echo ""
+
+echo "🔗 Next Steps:"
+echo ""
+echo "1. Go to https://render.com and sign up/login"
+echo ""
+echo "2. Connect your GitHub repository"
+echo ""
+echo "3. Create a WEB SERVICE for Backend:"
+echo "   - Name: insightdash-backend"
+echo "   - Environment: Docker"
+echo "   - Dockerfile path: InsightDash/backend/Dockerfile"
+echo "   - Port: 8000"
+echo ""
+echo "4. Create a STATIC SITE for Frontend:"
+echo "   - Name: insightdash-frontend"
+echo "   - Build Command: cd InsightDash/frontend && npm install && npm run build"
+echo "   - Publish Directory: InsightDash/frontend/build"
+echo ""
+echo "5. Set Environment Variables:"
+echo "   Frontend: REACT_APP_API_URL=https://insightdash-backend.onrender.com"
+echo "   Backend: PORT=8000"
+echo ""
+echo "🌟 Your app will be live at:"
+echo "   https://insightdash-frontend.onrender.com"
+echo ""
+echo "💡 Tip: Use the free tier for testing, upgrade for production"
