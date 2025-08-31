@@ -7,13 +7,13 @@ const DataGenerator = () => {
   const [generating, setGenerating] = useState(false);
   const [generatedDataset, setGeneratedDataset] = useState(null);
 
+  const API_URL = process.env.REACT_APP_API_URL;
   const generateSampleData = async (type) => {
     setGenerating(true);
     try {
       // Add a small delay to show loading state
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      const response = await fetch(`http://localhost:8000/api/v1/demo/generate-data`, {
+      const response = await fetch(`${API_URL}/demo/generate-data`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,9 +50,9 @@ const DataGenerator = () => {
     try {
       // Run various analytics on the generated data
       const analytics = await Promise.all([
-        fetch(`http://localhost:8000/api/v1/analytics/trend?dataset_id=${generatedDataset.id}`),
-        fetch(`http://localhost:8000/api/v1/analytics/forecast?dataset_id=${generatedDataset.id}&method=linear_regression&periods=30`),
-        fetch(`http://localhost:8000/api/v1/analytics/forecast?dataset_id=${generatedDataset.id}&method=arima&periods=30`),
+        fetch(`${API_URL}/analytics/trend?dataset_id=${generatedDataset.id}`),
+        fetch(`${API_URL}/analytics/forecast?dataset_id=${generatedDataset.id}&method=linear_regression&periods=30`),
+        fetch(`${API_URL}/analytics/forecast?dataset_id=${generatedDataset.id}&method=arima&periods=30`),
       ]);
 
       const results = await Promise.all(analytics.map(r => r.json()));
