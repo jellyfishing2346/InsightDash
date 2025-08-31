@@ -10,7 +10,7 @@ type Props = {
 
 export default function DataLoader({ onDataLoad, onError }: Props) {
   const [loading, setLoading] = useState(false);
-  const [apiEndpoint, setApiEndpoint] = useState('http://localhost:8000/api/data');
+  const [apiEndpoint, setApiEndpoint] = useState(process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/data` : 'http://localhost:8000/api/data');
 
   const loadData = async () => {
     setLoading(true);

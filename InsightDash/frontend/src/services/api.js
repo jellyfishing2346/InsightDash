@@ -5,7 +5,7 @@ const API_BASE_URL = process.env.NODE_ENV === 'production'
   ? 'https://insightdash-backend.onrender.com/api/v1'
   : process.env.REACT_APP_API_URL 
     ? `${process.env.REACT_APP_API_URL}/api/v1` 
-    : 'http://localhost:8000/api/v1';
+    : process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
 
 // Create axios instance
 const api = axios.create({
